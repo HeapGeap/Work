@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form action="#" th:action="@{/house-update}" th:object="${house}" method="post">
+  <input type="hidden" th:field="*{id}" />
+  <div>
+    <label for="address">Адрес:</label>
+    <input type="text" id="address" name="address" th:field="*{address}" />
+  </div>
+  <div>
+    <label for="owner">Владелец:</label>
+    <select id="owner" name="owner.id" th:field="*{owner.id}">
+      <option value="" disabled selected>Выберите владельца</option>
+      <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}" th:selected="${user.id == house.owner.id}"></option>
+    </select>
+  </div>
+  <div>
+    <input type="submit" value="Обновить">
+  </div>
+</form>
+</body>
+</html>

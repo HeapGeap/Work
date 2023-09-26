@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action= "#" th:action= "@{/house-create}" th:object= "${house}" method="post">
+
+    <div>
+        <label for="address">Адрес:</label>
+        <input type="text" id="address" name="address" th:field="*{address}" />
+    </div>
+    <div>
+        <label for="owner">Владелец:</label>
+        <select id="owner" name="owner.id" th:field="*{owner}">
+            <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}"></option>
+        </select>
+    </div>
+    <div>
+
+
+    <input type="submit" value="Создать">
+    </div>
+</form>
+
+</body>
+</html>
